@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prithvish Kole — Power Electronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1e3c;
+    --navy-mid: #162340;
+    --teal: #00b4a0;
+    --teal-dark: #008f7e;
+    --teal-glow: rgba(0,180,160,0.12);
+    --slate: #8fa3c0;
+    --slate-light: #c8d6e8;
+    --white: #f4f8ff;
+    --card-bg: #192a4a;
+    --card-border: rgba(0,180,160,0.18);
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(15,30,60,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 6%;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 1.1rem; font-weight: 500;
+    color: var(--teal); letter-spacing: 0.04em;
+  }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav a {
+    text-decoration: none; color: var(--slate-light);
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--teal); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 10%; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem; color: var(--teal);
+    letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 600; color: var(--white);
+    line-height: 1.2; margin-bottom: 3rem;
+  }
+  .divider {
+    width: 48px; height: 3px;
+    background: var(--teal);
+    border-radius: 2px; margin: 0.8rem 0 3rem;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 8rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(0,180,160,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,160,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.82rem; color: var(--teal);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: inline-block;
+    width: 32px; height: 1px; background: var(--teal);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    font-weight: 600; line-height: 1.1;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  h1 .accent { color: var(--teal); }
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--slate); max-width: 560px;
+    margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 1.9rem; font-weight: 500; color: var(--teal);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--slate);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--teal); color: var(--navy);
+    padding: 0.75rem 1.8rem; border-radius: 4px;
+    font-weight: 600; font-size: 0.88rem;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid var(--teal); color: var(--teal);
+    padding: 0.75rem 1.8rem; border-radius: 4px;
+    font-weight: 600; font-size: 0.88rem;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { background: var(--teal-glow); transform: translateY(-1px); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--navy-mid); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+  }
+  .about-text p {
+    color: var(--slate-light); margin-bottom: 1rem;
+    font-weight: 300; font-size: 1.02rem;
+  }
+  .contact-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .contact-list li {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.9rem; color: var(--slate-light);
+  }
+  .contact-list a { color: var(--teal); text-decoration: none; }
+  .contact-list a:hover { text-decoration: underline; }
+  .contact-icon {
+    width: 18px; height: 18px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--teal);
+  }
+  .education-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative; overflow: hidden;
+  }
+  .education-card::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--teal);
+  }
+  .edu-degree { font-weight: 600; color: var(--white); font-size: 0.97rem; }
+  .edu-school { color: var(--teal); font-size: 0.88rem; margin: 0.2rem 0; }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.78rem; color: var(--slate);
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 7px; top: 8px; bottom: 0;
+    width: 1px; background: var(--card-border);
+  }
+  .timeline-item { position: relative; margin-bottom: 3rem; }
+  .timeline-dot {
+    position: absolute; left: -1.9rem; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--teal); border: 2px solid var(--navy);
+    box-shadow: 0 0 0 4px var(--teal-glow);
+  }
+  .job-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 1.6rem 1.8rem;
+  }
+  .job-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .job-title { font-weight: 600; font-size: 1.05rem; color: var(--white); }
+  .job-period {
+    font-family: var(--mono);
+    font-size: 0.78rem; color: var(--teal); white-space: nowrap;
+  }
+  .job-company { color: var(--teal); font-size: 0.9rem; margin-bottom: 0.9rem; }
+  .job-desc { color: var(--slate-light); font-size: 0.93rem; font-weight: 300; }
+  .job-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.72rem; padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+    background: rgba(0,180,160,0.1);
+    color: var(--teal); border: 1px solid rgba(0,180,160,0.25);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy-mid); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 1.6rem;
+    transition: border-color 0.25s, transform 0.2s;
+    cursor: default;
+  }
+  .project-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-3px);
+  }
+  .project-icon {
+    width: 42px; height: 42px; border-radius: 6px;
+    background: var(--teal-glow); border: 1px solid var(--card-border);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  .project-name { font-weight: 600; color: var(--white); margin-bottom: 0.5rem; font-size: 1rem; }
+  .project-desc { color: var(--slate); font-size: 0.88rem; font-weight: 300; margin-bottom: 1rem; }
+  .project-spec {
+    font-family: var(--mono);
+    font-size: 0.76rem; color: var(--teal);
+    padding: 0.4rem 0.8rem;
+    background: rgba(0,180,160,0.08);
+    border-radius: 3px; display: inline-block;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 1.4rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.75rem; color: var(--teal);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1rem; padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .skill-list li {
+    font-size: 0.88rem; color: var(--slate-light);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-list li::before {
+    content: '▸'; color: var(--teal); font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  /* ── INTERESTS ── */
+  #interests { background: var(--navy-mid); }
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .interest-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 1.2rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .interest-card:hover { border-color: var(--teal); }
+  .interest-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+  .interest-name { font-size: 0.88rem; color: var(--white); font-weight: 500; margin-bottom: 0.3rem; }
+  .interest-sub { font-size: 0.78rem; color: var(--slate); }
+
+  /* ── GITHUB SETUP GUIDE ── */
+  #github {
+    border-top: 1px solid var(--card-border);
+  }
+  .steps-list { counter-reset: step; list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+  .steps-list li {
+    counter-increment: step;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 1.4rem 1.4rem 1.4rem 4.5rem;
+    position: relative; color: var(--slate-light); font-size: 0.93rem;
+  }
+  .steps-list li::before {
+    content: counter(step);
+    position: absolute; left: 1.4rem; top: 50%; transform: translateY(-50%);
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--teal-glow); border: 1px solid var(--teal);
+    color: var(--teal); font-family: var(--mono);
+    font-size: 0.85rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .steps-list strong { color: var(--white); }
+  code {
+    font-family: var(--mono);
+    font-size: 0.82em; color: var(--teal);
+    background: rgba(0,180,160,0.1);
+    padding: 0.1em 0.4em; border-radius: 3px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 3rem 10%;
+    border-top: 1px solid var(--card-border);
+    color: var(--slate); font-size: 0.82rem;
+  }
+  footer a { color: var(--teal); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 4rem 6%; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    nav ul { gap: 1rem; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&lt;PK /&gt;</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#github">Setup Guide</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-eyebrow">Power Electronics Hardware Engineer</div>
+  <h1>Prithvish<br><span class="accent">Kole</span></h1>
+  <p class="hero-tagline">
+    Designing high-efficiency power conversion systems — from 25 W isolated flybacks to 3.6 kW phase-shift full-bridge converters. Four years building at Bose Research and Matter Motor Works.
+  </p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">7+</span>
+      <span class="stat-label">Converter Designs</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">3.6 kW</span>
+      <span class="stat-label">Max Power Rating</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">510 V</span>
+      <span class="stat-label">Max Voltage Range</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4 yr</span>
+      <span class="stat-label">Industry Experience</span>
+    </div>
+  </div>
+  <div class="cta-row">
+    <a href="#projects" class="btn-primary">View Projects →</a>
+    <a href="#github" class="btn-ghost">Deploy This Page</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// 01 — profile</div>
+  <div class="section-title">About Me</div>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a Power Electronics Hardware Engineer with expertise spanning isolated and non-isolated DC-DC converters, AC-DC PFC stages, magnetics design, gate driver circuits, and 3-phase power systems.
+      </p>
+      <p>
+        My work at Bose Research Pvt. Ltd. covered the full development cycle — from topology selection and simulation in LTspice/PSIM to PCB layout in Altium, hardware bring-up, and validation up to 3.6 kW. I thrive at the intersection of analog design intuition and rigorous bench measurement.
+      </p>
+      <p>
+        Currently seeking Power Electronics R&D roles in Bengaluru, Pune, Hyderabad, or Mumbai, where I can contribute to the design of next-generation energy conversion products.
+      </p>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-icon">✉</span>
+          <a href="mailto:prithvish.kole@email.com">prithvish.kole@email.com</a>
+        </li>
+        <li>
+          <span class="contact-icon">🔗</span>
+          <a href="https://linkedin.com/in/prithvishkole" target="_blank">linkedin.com/in/prithvishkole</a>
+        </li>
+        <li>
+          <span class="contact-icon">📍</span>
+          Bengaluru, Karnataka, India
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="education-card">
+        <div class="edu-degree">B.Tech — Electronics Engineering</div>
+        <div class="edu-school">MAKAUT University, West Bengal</div>
+        <div class="edu-year">Graduated 2021</div>
+      </div>
+      <div class="education-card">
+        <div class="edu-degree">Diploma — Electronics &amp; Communication</div>
+        <div class="edu-school">WBSCTVESD, West Bengal</div>
+        <div class="edu-year">Graduated 2018</div>
+      </div>
+      <div class="education-card">
+        <div class="edu-degree">Power Electronics Specialisation</div>
+        <div class="edu-school">Self-directed: LLC Resonant, ZVS/ZCS, PFC Design</div>
+        <div class="edu-year">2022 – Present</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// 02 — experience</div>
+  <div class="section-title">Work History</div>
+  <div class="divider"></div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-title">Power Electronics Hardware Engineer</div>
+          <div class="job-period">Sept 2021 – Sept 2025</div>
+        </div>
+        <div class="job-company">Bose Research Pvt. Ltd. (BRPL), India</div>
+        <div class="job-desc">
+          Led design and validation of multiple isolated and non-isolated DC-DC converters and AC-DC PFC stages. Owned magnetics design (ETD44 transformers, PFC inductors), gate driver circuits, PCB layout in Altium, and full hardware bring-up from prototype to validation. Power range: 25 W – 3.6 kW, voltages 3.3 V – 510 V. Collaborated on 3-phase sequence detection and 6-CT field test reporting.
+        </div>
+        <div class="job-tags">
+          <span class="tag">LTspice</span><span class="tag">PSIM</span><span class="tag">Altium Designer</span>
+          <span class="tag">PADS</span><span class="tag">CAN / PCAN</span><span class="tag">PFC</span>
+          <span class="tag">Phase-Shift FB</span><span class="tag">Magnetics</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-title">Power Electronics Testing &amp; Validation Engineer</div>
+          <div class="job-period">Prior to 2021</div>
+        </div>
+        <div class="job-company">Matter Motor Works, India</div>
+        <div class="job-desc">
+          Performed systematic hardware validation and testing of power electronics modules for EV applications. Developed bench test procedures, characterised performance over load and temperature, and documented test reports for engineering sign-off.
+        </div>
+        <div class="job-tags">
+          <span class="tag">EV Power Systems</span><span class="tag">Bench Testing</span>
+          <span class="tag">Validation</span><span class="tag">Test Reporting</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// 03 — projects</div>
+  <div class="section-title">Key Projects</div>
+  <div class="divider"></div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-icon">⚡</div>
+      <div class="project-name">Phase-Shift Full-Bridge DC-DC Converter</div>
+      <div class="project-desc">Isolated DC-DC converter with ZVS soft-switching. Full design cycle: topology selection, magnetics (ETD44), Altium layout, bring-up and efficiency characterisation.</div>
+      <div class="project-spec">3.6 kW · 400 V input · Altium + LTspice</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🔋</div>
+      <div class="project-name">Full-Bridge PFC Stage</div>
+      <div class="project-desc">AC-DC front-end PFC converter achieving near-unity power factor. Inductor design, control loop tuning, and THD validation on the bench.</div>
+      <div class="project-spec">1 kW · Universal AC input · PSIM simulation</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🔌</div>
+      <div class="project-name">PFC with Adjustable Output Power</div>
+      <div class="project-desc">Variable-output PFC stage with closed-loop power adjustment, designed for flexible load profiles. Included CAN-based power command interface.</div>
+      <div class="project-spec">Adjustable output · CAN / PCAN control</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📡</div>
+      <div class="project-name">DCM PFC Converter</div>
+      <div class="project-desc">Discontinuous-conduction-mode PFC for simpler control. Designed and characterised inductor current waveforms, optimised gate drive timing.</div>
+      <div class="project-spec">DCM topology · LTspice verified</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🧲</div>
+      <div class="project-name">ETD44 Transformer Testing</div>
+      <div class="project-desc">Systematic characterisation of custom ETD44-core transformers: inductance, leakage, saturation, and thermal performance across operating conditions.</div>
+      <div class="project-spec">ETD44 core · Impedance analyser · Test reports</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🔎</div>
+      <div class="project-name">3-Phase Sequence Detector</div>
+      <div class="project-desc">Hardware circuit to detect phase sequence and rotation in 3-phase systems. Used for protection and grid-tie interlock in field installations.</div>
+      <div class="project-spec">3-phase · 6-CT field test validated</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">💡</div>
+      <div class="project-name">LED Illumination Subsystem (Robot)</div>
+      <div class="project-desc">High-power LED driver subsystem for an autonomous drywall-finishing robot. Specified Cree XHP70.3 LEDs with Mean Well NLDD-1400H constant-current drivers.</div>
+      <div class="project-spec">NLDD-1400H · XHP70.3 · Thermal analysis</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// 04 — skills</div>
+  <div class="section-title">Technical Skills</div>
+  <div class="divider"></div>
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="skill-group-title">Power Topologies</div>
+      <ul class="skill-list">
+        <li>Phase-Shift Full-Bridge (ZVS)</li>
+        <li>LLC Resonant Converter</li>
+        <li>Boost / Bridgeless PFC</li>
+        <li>Flyback &amp; Forward</li>
+        <li>Buck / Boost / Buck-Boost</li>
+        <li>DCM &amp; CCM operation</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Design &amp; Simulation</div>
+      <ul class="skill-list">
+        <li>LTspice, PSIM, PLECS</li>
+        <li>MATLAB / Simulink</li>
+        <li>Altium Designer</li>
+        <li>PADS PCB Layout</li>
+        <li>Magnetics design (ETD cores)</li>
+        <li>Gate driver circuits</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Hardware &amp; Testing</div>
+      <ul class="skill-list">
+        <li>Bench bring-up (1 kV / 5 kW)</li>
+        <li>Oscilloscope &amp; power analyser</li>
+        <li>Impedance analyser</li>
+        <li>MOSFET vs IGBT selection</li>
+        <li>Thermal management</li>
+        <li>EMI / conducted noise</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Protocols &amp; Interfaces</div>
+      <ul class="skill-list">
+        <li>CAN / PCAN</li>
+        <li>I²C, SPI, UART</li>
+        <li>3-phase system analysis</li>
+        <li>Current transformer (CT)</li>
+        <li>Protection circuits</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Knowledge Domains</div>
+      <ul class="skill-list">
+        <li>ZVS / ZCS soft-switching</li>
+        <li>PFC inductor &amp; cap design</li>
+        <li>Control loop compensation</li>
+        <li>Isolated gate drivers</li>
+        <li>LLC resonant design</li>
+        <li>EV powertrain systems</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Soft Skills</div>
+      <ul class="skill-list">
+        <li>Technical documentation</li>
+        <li>Cross-functional handover</li>
+        <li>Test &amp; validation reporting</li>
+        <li>Root-cause analysis</li>
+        <li>Independent design ownership</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests">
+  <div class="section-label">// 05 — interests</div>
+  <div class="section-title">Research Interests</div>
+  <div class="divider"></div>
+  <div class="interests-grid">
+    <div class="interest-card">
+      <span class="interest-icon">🔋</span>
+      <div class="interest-name">EV Power Trains</div>
+      <div class="interest-sub">OBC, DC-DC, inverter design</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">🌱</span>
+      <div class="interest-name">Renewable Energy</div>
+      <div class="interest-sub">Solar MPPT, bidirectional converters</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">📶</span>
+      <div class="interest-name">Wireless Power</div>
+      <div class="interest-sub">Resonant coupling, IPT systems</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">🤖</span>
+      <div class="interest-name">Robotics Power</div>
+      <div class="interest-sub">Compact high-density converters</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">📐</span>
+      <div class="interest-name">GaN / SiC Devices</div>
+      <div class="interest-sub">Wide-bandgap power semiconductors</div>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">🏗️</span>
+      <div class="interest-name">Industrial Drives</div>
+      <div class="interest-sub">3-phase inverters, motor control</div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB SETUP GUIDE -->
+<section id="github">
+  <div class="section-label">// 06 — deploy</div>
+  <div class="section-title">How to Put This Live on GitHub</div>
+  <div class="divider"></div>
+  <ol class="steps-list">
+    <li>
+      <strong>Create a GitHub account</strong> — go to <code>github.com</code>, sign up with a professional username like <code>prithvishkole</code>. Use your real name, add a profile photo, and write a 1-line bio: <em>"Power Electronics Hardware Engineer · Converters · Magnetics · PCB Design"</em>.
+    </li>
+    <li>
+      <strong>Create a special repository</strong> — make a new repo named exactly <code>prithvishkole.github.io</code> (replace with your username). This is GitHub's magic Pages URL — any <code>index.html</code> here becomes your live website automatically.
+    </li>
+    <li>
+      <strong>Upload this file</strong> — rename the downloaded file to <code>index.html</code>. In your repo, click <strong>Add file → Upload files</strong>, drag it in, and commit. Your site goes live within 60 seconds at <code>https://prithvishkole.github.io</code>.
+    </li>
+    <li>
+      <strong>Personalise the content</strong> — open the file in GitHub's editor (pencil icon) and update: your email, LinkedIn URL, project details, exact work dates, and university grad years. Save &amp; commit each change.
+    </li>
+    <li>
+      <strong>Pin the repo on your profile</strong> — go to your GitHub profile, click <strong>Customize your pins</strong>, and pin <code>prithvishkole.github.io</code> so recruiters see it immediately.
+    </li>
+    <li>
+      <strong>Add a README to your profile</strong> — create a repo named exactly <code>prithvishkole</code> (same as username) with a <code>README.md</code>. This renders on your GitHub profile. Keep it short: name, role, key skills, and a link to your portfolio.
+    </li>
+    <li>
+      <strong>Link it everywhere</strong> — add the live URL to your LinkedIn "Website" field, your resume header, and your email signature. Recruiters who Google your name will find it.
+    </li>
+  </ol>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Prithvish Kole · Power Electronics Hardware Engineer · <a href="mailto:prithvish.kole@email.com">prithvish.kole@email.com</a></p>
+  <p style="margin-top:0.4rem; font-size:0.75rem; opacity:0.5;">Built with HTML/CSS · Hosted on GitHub Pages · © 2025</p>
+</footer>
+
+</body>
+</html>
